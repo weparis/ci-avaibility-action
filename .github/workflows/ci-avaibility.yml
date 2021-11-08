@@ -1,0 +1,29 @@
+name: ci-avaibility
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+        node: [ 14 ]
+
+    steps:
+      - name: Checkout a Branch 🛎
+        with:
+          ref: ${{ github.ref }}
+        uses: actions/checkout@master
+
+      - name: Peek available environment 🪐
+        uses: ./
+        with:
+          INFRA_IDS: demo-1,demo-2,demo-3
+          OPERATION: peek
+      - name: Free environment 🪐
+        uses: ./
+        with:
+          OPERATION: free
