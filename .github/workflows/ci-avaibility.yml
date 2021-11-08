@@ -22,8 +22,8 @@ jobs:
         uses: ./
         with:
           INFRA_IDS: demo-1,demo-2,demo-3
-          OPERATION: peek
+          operation: peek
       - name: Free environment 🪐
         uses: ./
         with:
-          OPERATION: free
+          operation: free
