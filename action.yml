@@ -3,7 +3,7 @@ description: "Peek an environment with ci-avaibility"
 author: "xavier.delestre.partner@decathlon.com"
 
 inputs:
-  OPERATION:
+  operation:
     description: "peek, free"
     required: true
   INFRA_IDS:
