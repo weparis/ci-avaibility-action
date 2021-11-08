@@ -21,16 +21,12 @@ function free {
 }
 env
 
-echo BRANCH_SLUG $BRANCH_SLUG
-echo INPUT_operation $INPUT_operation
-echo INPUT_INFRA_IDS $INPUT_INFRA_IDS
-
 exportBranchSlug
 
-if [ "${INPUT_operation}" == "peek" ]; then
+if [ "${INPUT_OPERATION}" == "peek" ]; then
   peek
-elif  [ "${INPUT_operation}" == "free" ]; then
+elif  [ "${INPUT_OPERATION}" == "free" ]; then
   free
 else
-  echo Unknown or missing operation "${INPUT_operation}"
+  echo Unknown or missing operation "${INPUT_OPERATION}"
 fi
