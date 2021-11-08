@@ -19,6 +19,11 @@ function free {
   INFRA_ID=$(curl -sS "https://europe-west1-ci-availability.cloudfunctions.net/peekAvailableInfra?projectName=${GITHUB_REPOSITORY}&branchId=${GITHUB_HEAD_REF}")
   curl -sS "https://europe-west1-ci-availability.cloudfunctions.net/freeInfra?infraId=$INFRA_ID"
 }
+env
+
+echo BRANCH_SLUG $BRANCH_SLUG
+echo INPUT_operation $INPUT_operation
+echo INPUT_INFRA_IDS $INPUT_INFRA_IDS
 
 exportBranchSlug
 

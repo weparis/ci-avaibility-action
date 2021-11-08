@@ -7,7 +7,7 @@ inputs:
     description: "peek, free"
     required: true
   INFRA_IDS:
-    description: "Comma separated list of environment name to be managed by ci-avaibility for this project"
+    description: "Comma separated list of environments names to be managed by ci-avaibility for this project"
     required: false
 runs:
   using: "docker"
