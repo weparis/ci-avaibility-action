@@ -10,14 +10,14 @@ function exportBranchSlug {
 function peek {
   if [ -z ${INPUT_INFRA_IDS} ]; then echo "Missing INFRA_IDS. Did you specify 'with' action parameter ?"; fi
   curl -sS -o /dev/null "https://europe-west1-ci-availability.cloudfunctions.net/setInfraForProject?projectName=${GITHUB_REPOSITORY}&infraIds=${INPUT_INFRA_IDS}"
-  INFRA_ID=$(curl -sS "https://europe-west1-ci-availability.cloudfunctions.net/peekAvailableInfra?projectName=${GITHUB_REPOSITORY}&branchId=${BRANCH_SLUG}")
+  INFRA_ID=$(curl -fsS "https://europe-west1-ci-availability.cloudfunctions.net/peekAvailableInfra?projectName=${GITHUB_REPOSITORY}&branchId=${BRANCH_SLUG}")
   echo "INFRA_ID=$INFRA_ID" >> $GITHUB_ENV
   echo Picked $INFRA_ID
 }
 
 function free {
-  INFRA_ID=$(curl -sS "https://europe-west1-ci-availability.cloudfunctions.net/peekAvailableInfra?projectName=${GITHUB_REPOSITORY}&branchId=${GITHUB_HEAD_REF}")
-  curl -sS "https://europe-west1-ci-availability.cloudfunctions.net/freeInfra?infraId=$INFRA_ID"
+  INFRA_ID=$(curl -fsS "https://europe-west1-ci-availability.cloudfunctions.net/peekAvailableInfra?projectName=${GITHUB_REPOSITORY}&branchId=${BRANCH_SLUG}")
+  curl -fsS "https://europe-west1-ci-availability.cloudfunctions.net/freeInfra?infraId=$INFRA_ID"
 }
 
 exportBranchSlug
